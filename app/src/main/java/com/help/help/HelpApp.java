@@ -25,7 +25,7 @@ public class HelpApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        // 注册App异常崩溃处理器
+        // 注册App异常崩溃处理器  test
 //        CustomActivityOnCrash.install(this);
         File cacheFolder = getCacheDir();
         RxVolley.setRequestQueue(RequestQueue.newRequestQueue(cacheFolder, new
