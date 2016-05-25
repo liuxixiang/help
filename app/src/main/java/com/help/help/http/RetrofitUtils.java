@@ -1,10 +1,9 @@
 package com.help.help.http;
 
 import android.content.Context;
-
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+
 
 /**
  * Created by liuxihui on 2016/3/28.
@@ -14,14 +13,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitUtils {
     private static Retrofit retrofit;
 
-    public static <T> T create(Context context, Class<T> clazz) {
+    public static <T> T create(Class<T> clazz) {
         if (retrofit == null) {
             synchronized (RetrofitUtils.class) {
                 if (retrofit == null) {
                     retrofit = new Retrofit.Builder()
                             .baseUrl(HttpURLConstant.BASE_URL)
-                            .client(OkHttpUtils.getInstance(context))
-                            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                            .client(OkHttpUtils.getInstance())
+//                            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                             .addConverterFactory(GsonConverterFactory.create())
                             .build();
                 }
@@ -29,4 +28,15 @@ public class RetrofitUtils {
         }
         return retrofit.create(clazz);
     }
+
+    public static APIService getAPIService() {
+        return create(APIService.class);
+    }
+    /**
+     * 重置网络请求
+     */
+	public static void resetRetrofit() {
+		retrofit = null;
+		create(APIService.class);
+	}
 }

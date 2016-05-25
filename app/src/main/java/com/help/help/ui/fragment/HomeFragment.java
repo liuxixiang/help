@@ -2,14 +2,11 @@ package com.help.help.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.help.help.R;
-import com.help.help.http.HelpHttpApi;
-import com.kymjs.rxvolley.client.HttpCallback;
 
 /**
  * Created by liuxihui on 2016/2/22.
@@ -43,6 +40,5 @@ public class HomeFragment extends BaseFragment {
 //            }
 //        },"adley2", "12345");
 
-        HelpHttpApi.login1(getActivity(),"adley3", "123456");
     }
 }
