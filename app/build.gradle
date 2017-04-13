@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
-
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.help.help"
+        applicationId "fangjs.fangjinsuo.com.help"
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -21,22 +21,18 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:design:23.1.1'
-    compile 'com.kymjs.rxvolley:rxvolley:1.0.2'
-    compile 'com.kymjs.rxvolley:okhttp:1.0.1'
-    compile 'com.kymjs.rxvolley:bitmapcore:1.0.1'
-    compile 'com.jakewharton:butterknife:7.0.1'
-    compile files('libs/base64-2.3.8.jar')
-    compile files('libs/fastjson-1.1.43.android.jar')
-
-    compile 'com.squareup.retrofit2:retrofit:2.0.0'
-    compile 'com.squareup.okhttp3:okhttp:3.2.0'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
-    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4'
-    compile 'io.reactivex:rxjava:1.0.y-SNAPSHOT'
-    compile 'io.reactivex:rxandroid:1.1.0'
-    compile 'io.reactivex:rxjava:1.1.0'
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    compile 'io.reactivex.rxjava2:rxjava:2.0.8'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
+    compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+    compile 'com.jakewharton:butterknife:8.5.1'
 }
