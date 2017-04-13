@@ -1,13 +1,8 @@
 package fangjs.fangjinsuo.com.help.http;
 
 
-import android.widget.Toast;
-
-import fangjs.fangjinsuo.com.help.Utils.NetWorkUtils;
-import fangjs.fangjinsuo.com.help.app.App;
 import fangjs.fangjinsuo.com.help.base.BaseActivity;
 import io.reactivex.functions.Consumer;
-import rx.Subscriber;
 
 /**
  * Created by lxh on 2017/4/12.
