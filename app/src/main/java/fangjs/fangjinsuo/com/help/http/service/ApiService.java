@@ -2,6 +2,7 @@ package fangjs.fangjinsuo.com.help.http.service;
 
 import java.util.Map;
 
+import fangjs.fangjinsuo.com.help.http.BaseResponse;
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
@@ -22,7 +23,7 @@ import retrofit2.http.Url;
 public interface ApiService {
 
     @POST("{path}")
-    Flowable<ResponseBody> post(
+    <T> Flowable<BaseResponse<T>> post(
             @Path(value = "path", encoded = true) String path,
             @QueryMap Map<String, Object> map);
 
@@ -30,6 +31,11 @@ public interface ApiService {
     Flowable<ResponseBody> postJSON(
             @Path(value = "path", encoded = true) String path,
             @Body RequestBody route);
+
+
+    @GET("{path}")
+    Flowable<BaseResponse<Object>> get(
+            @Path(value = "path", encoded = true) String path);
 
     @GET("{path}")
     Flowable<ResponseBody> get(

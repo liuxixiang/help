@@ -1,4 +1,4 @@
-package fangjs.fangjinsuo.com.help.exception;
+package fangjs.fangjinsuo.com.help.http.exception;
 
 /**
  * 服务器表单异常

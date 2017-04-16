@@ -1,4 +1,4 @@
-package fangjs.fangjinsuo.com.help.exception;
+package fangjs.fangjinsuo.com.help.http.exception;
 
 /**
  * api接口异常

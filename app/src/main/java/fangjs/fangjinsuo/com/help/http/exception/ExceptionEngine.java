@@ -1,11 +1,10 @@
-package fangjs.fangjinsuo.com.help.exception;
+package fangjs.fangjinsuo.com.help.http.exception;
 
 /**
  * Created by fangjinsuo.com on 2017/4/12.
  */
 
 import android.net.ParseException;
-import android.util.Log;
 
 import com.google.gson.JsonParseException;
 

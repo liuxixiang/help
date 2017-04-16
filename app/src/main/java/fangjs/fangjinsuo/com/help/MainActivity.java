@@ -1,14 +1,40 @@
 package fangjs.fangjinsuo.com.help;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.BindView;
+import fangjs.fangjinsuo.com.help.base.BaseActivity;
+
+public class MainActivity extends BaseActivity {
+
+    @BindView(R.id.btn_ok)
+    TextView btn;
+    private MainPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        mPresenter = new MainPresenter();
+        mPresenter.attachView(this);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPresenter.getContent();
+            }
+        });
 
+    }
+
+
+    @Override
+    protected void initInject() {
+
+    }
+
+    @Override
+    protected int getLayout() {
+        return R.layout.activity_main;
     }
 }

@@ -1,4 +1,4 @@
-package fangjs.fangjinsuo.com.help.Utils;
+package fangjs.fangjinsuo.com.help.utils;
 
 import android.annotation.TargetApi;
 import android.content.Context;

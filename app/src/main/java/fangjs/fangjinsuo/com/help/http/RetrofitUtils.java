@@ -5,18 +5,13 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import fangjs.fangjinsuo.com.help.BuildConfig;
-import fangjs.fangjinsuo.com.help.Utils.NetWorkUtils;
+import fangjs.fangjinsuo.com.help.utils.NetWorkUtils;
 import fangjs.fangjinsuo.com.help.app.App;
 import fangjs.fangjinsuo.com.help.app.AppConfig;
-import fangjs.fangjinsuo.com.help.exception.ExceptionEngine;
 import fangjs.fangjinsuo.com.help.http.service.ApiService;
-import io.reactivex.Observable;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.functions.Consumer;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
@@ -127,39 +122,4 @@ public class RetrofitUtils {
         return sRetrofit.create(clazz);
     }
 
-
-   /* *//**
-     * @param <T>
-     * @return
-     *//*
-    public <T> rx.Observable.Transformer<BaseResponse<T>, T> handleErrTransformer() {
-            return  new rx.Observable.Transformer() {
-                @Override
-                public Object call(Object observable) {
-                    return ((rx.Observable) observable)*//*.map(new HandleFuc<T>())*//*
-                            .onErrorResumeNext(new HttpResponseFunc<T>());
-                }
-            };
-    }
-
-    *//**
-     * 我们将原来Throwable 强转成自定义的 ResponeThrowable
-     * Created by lxh on 2017/4/12.
-     *//*
-
-    public static class HttpResponseFunc<T> implements Func1<Throwable, Observable<T>> {
-
-        @Override
-        public Observable<T> call(Throwable throwable) {
-            return  Observable.error(ExceptionEngine.handleException(throwable));
-        }
-    }*/
-
-    public static class HttpResponseConsumer<T extends Throwable> implements Consumer<T> {
-
-        @Override
-        public void accept(@NonNull T t) throws Exception {
-            ExceptionEngine.handleException(t);
-        }
-    }
 }

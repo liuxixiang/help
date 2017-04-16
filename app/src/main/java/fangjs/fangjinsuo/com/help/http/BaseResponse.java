@@ -39,8 +39,12 @@ public class BaseResponse<T> {
         this.data = data;
     }
 
+    /**
+     * 请求是否连通
+     * @return
+     */
     public boolean isOk() {
-        return code == 0;
+        return code == 200;
     }
 
 }

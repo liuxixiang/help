@@ -8,7 +8,7 @@ import android.content.Context;
 
 import java.io.IOException;
 
-import fangjs.fangjinsuo.com.help.Utils.NetWorkUtils;
+import fangjs.fangjinsuo.com.help.utils.NetWorkUtils;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
