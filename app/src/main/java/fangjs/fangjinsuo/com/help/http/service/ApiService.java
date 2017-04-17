@@ -1,15 +1,12 @@
 package fangjs.fangjinsuo.com.help.http.service;
 
-import java.util.List;
 import java.util.Map;
 
-import fangjs.fangjinsuo.com.help.bean.CustomerResponseBean;
-import fangjs.fangjinsuo.com.help.http.ResponseResult;
 import fangjs.fangjinsuo.com.help.http.HttpURLConstant;
+import fangjs.fangjinsuo.com.help.http.ResponseResult;
 import io.reactivex.Flowable;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
@@ -77,6 +74,6 @@ public interface ApiService {
      * @return
      */
     @GET(HttpURLConstant.GET_CUSTOMER_LIST)
-    Flowable<ResponseResult<List<CustomerResponseBean>>> getCustomerList();
+    Flowable<ResponseBody> getCustomerList();
 
 }
