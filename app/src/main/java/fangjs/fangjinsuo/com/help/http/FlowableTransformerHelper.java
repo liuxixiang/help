@@ -1,5 +1,10 @@
 package fangjs.fangjinsuo.com.help.http;
 
+import android.util.Log;
+
+import java.util.List;
+
+import fangjs.fangjinsuo.com.help.bean.CustomerResponseBean;
 import fangjs.fangjinsuo.com.help.http.exception.ExceptionEngine;
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
@@ -10,7 +15,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.ResponseBody;
 
 
 /**
@@ -82,16 +86,16 @@ public class FlowableTransformerHelper {
      * @param <T>
      * @return
      */
-    public static <T> FlowableTransformer<BaseResponse<T>, T> handleResult() {   //compose判断结果
-        return new FlowableTransformer<BaseResponse<T>, T>() {
+    public static <T> FlowableTransformer<ResponseResult<T>, T> handleResult() {   //compose判断结果
+        return new FlowableTransformer<ResponseResult<T>, T>() {
             @Override
-            public Flowable<T> apply(@NonNull Flowable<BaseResponse<T>> httpResponseFlowable) {
+            public Flowable<T> apply(@NonNull Flowable<ResponseResult<T>> httpResponseFlowable) {
 
-                return httpResponseFlowable.flatMap(new Function<BaseResponse<T>, Flowable<T>>() {
+                return httpResponseFlowable.flatMap(new Function<ResponseResult<T>, Flowable<T>>() {
                     @Override
-                    public Flowable<T> apply(@NonNull BaseResponse<T> tBaseResponse) throws Exception {
-                        if(tBaseResponse.getData()!= null) {
-                            return createData(tBaseResponse.getData());
+                    public Flowable<T> apply(@NonNull ResponseResult<T> tResponseResult) throws Exception {
+                        if(tResponseResult.getData()!= null) {
+                            return createData(tResponseResult.getData());
                         }else {
                             return Flowable.error(new Exception("服务器返回error"));
                         }
@@ -106,10 +110,11 @@ public class FlowableTransformerHelper {
      * @param <T>
      * @return
      */
-    public static <T> Function<Throwable, Flowable<BaseResponse<T>>> handleException() {
-        return new Function<Throwable, Flowable<BaseResponse<T>>>() {
+    public static <T> Function<Throwable, Flowable<? extends T>> handleException() {
+        return new Function<Throwable, Flowable<? extends T>>() {
             @Override
-            public Flowable<BaseResponse<T>> apply(@NonNull Throwable throwable) throws Exception {
+            public Flowable<? extends T> apply(@NonNull Throwable throwable) throws Exception {
+                Log.d("lxh", "onErrorResumeNext----");
                 return Flowable.error(ExceptionEngine.handleException(throwable));
             }
         };

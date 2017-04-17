@@ -9,7 +9,7 @@ package fangjs.fangjinsuo.com.help.http;
  * Created by lxh on 2017-04-11.
  */
 
-public class BaseResponse<T> {
+public class ResponseResult<T> {
 
     private int code;
     private String msg;

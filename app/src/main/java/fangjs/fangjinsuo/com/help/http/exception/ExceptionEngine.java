@@ -7,13 +7,13 @@ package fangjs.fangjinsuo.com.help.http.exception;
 import android.net.ParseException;
 
 import com.google.gson.JsonParseException;
+import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 
 import org.apache.http.conn.ConnectTimeoutException;
 import org.json.JSONException;
 
 import java.net.ConnectException;
 
-import retrofit2.HttpException;
 
 
 /**
@@ -58,6 +58,7 @@ public class ExceptionEngine {
                     ex.setMessage("网络错误");
                 case HANDEL_ERRROR:
                     ex.setMessage("接口处理失败");
+                    break;
                 default:
                     ex.setMessage(e.getMessage());
                     break;

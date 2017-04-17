@@ -1,12 +1,15 @@
 package fangjs.fangjinsuo.com.help.http.service;
 
+import java.util.List;
 import java.util.Map;
 
-import fangjs.fangjinsuo.com.help.http.BaseResponse;
+import fangjs.fangjinsuo.com.help.bean.CustomerResponseBean;
+import fangjs.fangjinsuo.com.help.http.ResponseResult;
+import fangjs.fangjinsuo.com.help.http.HttpURLConstant;
 import io.reactivex.Flowable;
-import io.reactivex.Observable;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
@@ -23,7 +26,7 @@ import retrofit2.http.Url;
 public interface ApiService {
 
     @POST("{path}")
-    <T> Flowable<BaseResponse<T>> post(
+    <T> Flowable<ResponseResult<T>> post(
             @Path(value = "path", encoded = true) String path,
             @QueryMap Map<String, Object> map);
 
@@ -34,7 +37,7 @@ public interface ApiService {
 
 
     @GET("{path}")
-    Flowable<BaseResponse<Object>> get(
+    <T> Flowable<ResponseResult<T>> get(
             @Path(value = "path", encoded = true) String path);
 
     @GET("{path}")
@@ -67,5 +70,13 @@ public interface ApiService {
     Flowable<ResponseBody> downloadFile(
             @Url String fileUrl);
 
+
+
+    /**
+     * 获取客户列表
+     * @return
+     */
+    @GET(HttpURLConstant.GET_CUSTOMER_LIST)
+    Flowable<ResponseResult<List<CustomerResponseBean>>> getCustomerList();
 
 }
