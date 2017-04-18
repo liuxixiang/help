@@ -1,7 +1,9 @@
 package fangjs.fangjinsuo.com.help.http.service;
 
+import java.util.List;
 import java.util.Map;
 
+import fangjs.fangjinsuo.com.help.bean.CustomerResponseBean;
 import fangjs.fangjinsuo.com.help.http.HttpURLConstant;
 import fangjs.fangjinsuo.com.help.http.ResponseResult;
 import io.reactivex.Flowable;
@@ -34,7 +36,7 @@ public interface ApiService {
 
 
     @GET("{path}")
-    <T> Flowable<ResponseResult<T>> get(
+    Flowable<ResponseBody> get(
             @Path(value = "path", encoded = true) String path);
 
     @GET("{path}")
@@ -74,6 +76,9 @@ public interface ApiService {
      * @return
      */
     @GET(HttpURLConstant.GET_CUSTOMER_LIST)
-    Flowable<ResponseBody> getCustomerList();
+    Flowable<ResponseResult<CustomerResponseBean>> getCustomerList();
+
+    @GET(HttpURLConstant.GET_CUSTOMER_LIST)
+    Flowable<ResponseBody> getCustomerList1();
 
 }
